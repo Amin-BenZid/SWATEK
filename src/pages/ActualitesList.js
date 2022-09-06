@@ -7,6 +7,9 @@ import Footer from "../components/Footer";
 import axios from "axios";
 import Actualites from "./Actualites";
 
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
+
 export default function ActualitesList(prop) {
   const [success, setSuccess] = useState();
   const [error, setError] = useState();
@@ -55,6 +58,9 @@ export default function ActualitesList(prop) {
   const handleChange = (e) => {
     setNewActualites({ ...newActualites, [e.target.name]: e.target.value });
   };
+  const handleParagraph = (e) => {
+    setNewActualites({ ...newActualites, paragraph: e });
+  };
 
   const handlePhoto = (e) => {
     setNewActualites({ ...newActualites, photo: e.target.files[0] });
@@ -65,12 +71,13 @@ export default function ActualitesList(prop) {
   useEffect(() => {
     getData();
   }, []);
+
   return (
     <Container id="actualitesList">
       <Navbar styleButton={prop.styleButton} />
       <div style={{ height: "2px", backgroundColor: "gray" }}></div>
 
-      <Row style={{ justifyContent: "center" }}>
+      <Row>
         {data === undefined ? (
           <h2 style={{ color: "white" }}>Loading...</h2>
         ) : (
@@ -78,7 +85,7 @@ export default function ActualitesList(prop) {
             {data
               .map((item) => {
                 return (
-                  <Row style={{ width: "30%", textAlign: "center" }}>
+                  <Row style={{ width: "25rem", textAlign: "center" }}>
                     <Col className="pt-5 align-self-center ">
                       <Actualites styleButton={prop.styleButton} data={item} />
                     </Col>
@@ -91,9 +98,8 @@ export default function ActualitesList(prop) {
       </Row>
 
       <Row style={{ color: "white" }}>
-        <Col></Col>
         <Col style={prop.styleButton}>
-          <Form onSubmit={handleSubmit}>
+          <Form style={{ width: "100%" }} onSubmit={handleSubmit}>
             <h2 style={{ color: "green" }}>{success}</h2>
             <h2 style={{ color: "red" }}>{error}</h2>
             <h1>ADD PARTNER</h1>
@@ -116,8 +122,10 @@ export default function ActualitesList(prop) {
                 name="title"
               />
               <Form.Label style={{ color: "white" }}> Paragraph</Form.Label>
-              <Form.Control
-                onChange={handleChange}
+              <ReactQuill
+                style={{ height: "30vh", marginBottom: "3rem" }}
+                onChange={handleParagraph}
+                theme="snow"
                 value={newActualites.paragraph}
                 className="formm"
                 type="paragraph"
@@ -130,7 +138,6 @@ export default function ActualitesList(prop) {
             <Button onClick={handleSubmit}>ADD!</Button>
           </Form>
         </Col>
-        <Col></Col>
       </Row>
       <div style={{ height: "2px", backgroundColor: "gray", marginTop: "5rem" }}></div>
 

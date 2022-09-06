@@ -7,10 +7,7 @@
   margin: 4rem;
   color: white;
 }
-.linkk {
-  color: gray;
-  text-decoration: none;
-}
+
 @media only screen and (max-width: 280px) {
   .sec {
     width: 1rem;

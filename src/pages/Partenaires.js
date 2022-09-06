@@ -1,6 +1,7 @@
 import "./partenaires.css";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import axios from "axios";
+import parse from "html-react-parser";
 
 export default function Produit(props) {
   const key = localStorage.getItem("authorization");
@@ -38,7 +39,7 @@ export default function Produit(props) {
           <img className="img" src={`http://localhost:8888/${props.getdata.logo}`} />
         </Col>
         <Col sm={12} md={6}>
-          <p>{props.getdata.partenairesDes}</p>
+          <p>{parse(props.getdata.partenairesDes)}</p>
           <Button style={props.styleButton} variant="danger" onClick={handleClick}>
             DELETE
           </Button>

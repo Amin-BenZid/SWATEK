@@ -27,14 +27,14 @@ export default function Footer() {
         </Col>
         <Col className="sec">
           <h3>NOS PRESTATIONS</h3>
-          <Link to="/batiment">
-            <p className="linkk">LA GESTION TECHNIQUE DU BÂTIMENT</p>
+          <Link style={{ textDecoration: "none" }} to="/batiment">
+            <br />- LA GESTION TECHNIQUE DU BÂTIMENT
           </Link>
-          <Link to="/embarques">
-            <p className="linkk">LES SYSTÈMES EMBARQUÉS</p>
+          <Link style={{ textDecoration: "none" }} to="/embarques">
+            <br />- LES SYSTÈMES EMBARQUÉS
           </Link>
-          <Link to="/info">
-            <p className="linkk">LES SYSTÈMES D’INFORMATIONS</p>
+          <Link style={{ textDecoration: "none" }} to="/info">
+            <br />- LES SYSTÈMES D’INFORMATIONS
           </Link>
         </Col>
         <Col className="sec">

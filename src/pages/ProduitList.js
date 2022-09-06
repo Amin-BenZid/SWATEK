@@ -4,6 +4,8 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Produit from "./Produit";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 export default function ProduitList(prop) {
   const [data, setData] = useState();
@@ -53,6 +55,9 @@ export default function ProduitList(prop) {
   const handleChange = (e) => {
     setNewProduct({ ...newProduct, [e.target.name]: e.target.value });
   };
+  const handleDescription = (e) => {
+    setNewProduct({ ...newProduct, description: e });
+  };
 
   const handlePhoto = (e) => {
     setNewProduct({ ...newProduct, logo: e.target.files[0] });
@@ -85,9 +90,8 @@ export default function ProduitList(prop) {
           )}
         </Row>
         <Row style={{ color: "white" }}>
-          <Col></Col>
           <Col style={prop.styleButton}>
-            <Form onSubmit={handleSubmit}>
+            <Form style={{ width: "100%" }} onSubmit={handleSubmit}>
               <h2 style={{ color: "green" }}>{success}</h2>
               <h2 style={{ color: "red" }}>{error}</h2>
               <h1>ADD PRODUCT</h1>
@@ -110,8 +114,11 @@ export default function ProduitList(prop) {
                   name="name"
                 />
                 <Form.Label style={{ color: "white" }}>Description</Form.Label>
-                <Form.Control
-                  onChange={handleChange}
+
+                <ReactQuill
+                  style={{ height: "30vh", marginBottom: "3rem" }}
+                  onChange={handleDescription}
+                  theme="snow"
                   value={newProduct.description}
                   className="formm"
                   type="Description"
@@ -122,7 +129,6 @@ export default function ProduitList(prop) {
               <Button type="submit">Submit</Button>
             </Form>
           </Col>
-          <Col></Col>
         </Row>
         <div style={{ height: "2px", backgroundColor: "gray", marginTop: "3.5rem" }}></div>
 

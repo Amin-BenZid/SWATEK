@@ -5,6 +5,8 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Form from "react-bootstrap/Form";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 export default function PartenairesList(prop) {
   const [newPartenaire, setNewPartenaire] = useState({
@@ -54,6 +56,9 @@ export default function PartenairesList(prop) {
   const handleChange = (e) => {
     setNewPartenaire({ ...newPartenaire, [e.target.name]: e.target.value });
   };
+  const handleDescription = (e) => {
+    setNewPartenaire({ ...newPartenaire, description: e });
+  };
 
   const handlePhoto = (e) => {
     setNewPartenaire({ ...newPartenaire, logo: e.target.files[0] });
@@ -85,9 +90,8 @@ export default function PartenairesList(prop) {
         )}
       </Row>
       <Row style={{ color: "white" }}>
-        <Col></Col>
         <Col style={prop.styleButton}>
-          <Form onSubmit={handleSubmit}>
+          <Form style={{ width: "100%" }} onSubmit={handleSubmit}>
             <h2 style={{ color: "green" }}>{success}</h2>
             <h2 style={{ color: "red" }}>{error}</h2>
             <h1>ADD PARTNER</h1>
@@ -110,8 +114,10 @@ export default function PartenairesList(prop) {
                 name="name"
               />
               <Form.Label style={{ color: "white" }}>Description</Form.Label>
-              <Form.Control
-                onChange={handleChange}
+              <ReactQuill
+                style={{ height: "30vh", marginBottom: "3rem" }}
+                onChange={handleDescription}
+                theme="snow"
                 value={newPartenaire.description}
                 className="formm"
                 type="Description"
@@ -122,7 +128,6 @@ export default function PartenairesList(prop) {
             <Button onClick={handleSubmit}>ADD!</Button>
           </Form>
         </Col>
-        <Col></Col>
       </Row>
       <div style={{ height: "2px", backgroundColor: "gray", marginTop: "3.5rem" }}></div>
 
