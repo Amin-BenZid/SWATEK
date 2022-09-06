@@ -1,0 +1,20 @@
+.footer {
+  display: flex;
+  margin: 5rem;
+}
+.sec {
+  width: 15rem;
+  margin: 4rem;
+  color: white;
+}
+.linkk {
+  color: gray;
+  text-decoration: none;
+}
+@media only screen and (max-width: 280px) {
+  .sec {
+    width: 1rem;
+    margin: 0rem;
+    color: white;
+  }
+}

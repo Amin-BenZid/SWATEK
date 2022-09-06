@@ -1,0 +1,28 @@
+.navbar img {
+  width: 11rem;
+}
+.link {
+  padding-left: 1rem;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+.link:hover {
+  color: #7420d3;
+}
+#contact {
+  color: #7420d3;
+  padding-left: 1rem;
+  cursor: pointer;
+}
+@media only screen and (max-width: 1000px) {
+  .navbar img {
+    width: 11rem;
+  }
+}
+
+@media only screen and (max-width: 290px) {
+  .navbar img {
+    width: 9rem;
+  }
+}

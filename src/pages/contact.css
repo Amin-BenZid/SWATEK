@@ -1,0 +1,34 @@
+.contact-img {
+  width: 35rem;
+  margin-top: 6rem;
+  margin-left: 2rem;
+}
+.formm {
+  border: 1px solid #7420d3;
+  background-color: transparent;
+  color: gray;
+}
+.formm::selection {
+  background-color: #7420d3;
+}
+
+@media only screen and (max-width: 1400px) {
+  .contact-img {
+    width: 20rem;
+    margin-top: 12rem;
+    margin-left: 8rem;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .contact-img {
+    width: 15rem;
+    margin-top: 14rem;
+    margin-left: 5rem;
+  }
+}
+
+@media only screen and (max-width: 770px) {
+  .contact-img {
+    display: none;
+  }
+}

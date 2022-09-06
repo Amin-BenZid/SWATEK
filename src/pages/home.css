@@ -1,0 +1,158 @@
+.home {
+  text-align: center;
+  display: flex;
+  width: 100%;
+}
+.home img {
+  width: 40rem;
+  background-color: transparent;
+}
+.cardd {
+  margin-bottom: 4.5rem;
+  color: white;
+}
+.cardd h1 {
+  margin-top: 16rem;
+  text-align: left;
+  cursor: pointer;
+}
+.cardd p {
+  cursor: pointer;
+  text-align: left;
+}
+@media only screen and (max-width: 1040px) {
+  .home img {
+    margin-top: 15%;
+    margin-right: 10%;
+    width: 28rem;
+  }
+  .cardd h1 {
+    font-size: 1.5rem;
+    margin-top: 12rem;
+    text-align: left;
+    cursor: pointer;
+  }
+  .cardd p {
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: left;
+  }
+}
+@media only screen and (max-width: 760px) {
+  .home img {
+    margin-top: 45%;
+    margin-right: 10%;
+    width: 20rem;
+  }
+  .cardd h1 {
+    font-size: 1rem;
+    margin-top: 16rem;
+    text-align: left;
+    cursor: pointer;
+  }
+  .cardd p {
+    font-size: 0.7rem;
+    cursor: pointer;
+    text-align: left;
+  }
+}
+
+@media only screen and (max-width: 570px) {
+  .home img {
+    margin-top: 5%;
+    margin-right: 10%;
+    width: 15rem;
+  }
+  .cardd h1 {
+    font-size: 0.8rem;
+    margin-top: 5rem;
+    text-align: left;
+    cursor: pointer;
+  }
+  .cardd p {
+    font-size: 0.5rem;
+    cursor: pointer;
+    text-align: left;
+  }
+}
+@media only screen and (max-width: 420px) {
+  .home img {
+    margin-top: 30%;
+    margin-right: 0;
+    width: 12rem;
+  }
+  .cardd h1 {
+    font-size: 0.8rem;
+    margin-top: 5rem;
+    text-align: left;
+    cursor: pointer;
+  }
+  .cardd p {
+    font-size: 0.5rem;
+    cursor: pointer;
+    text-align: left;
+  }
+}
+@media only screen and (max-width: 330px) {
+  .home img {
+    margin-top: 140%;
+    margin-right: 2%;
+    width: 10rem;
+  }
+  .cardd h1 {
+    font-size: 0.7rem;
+    margin-top: 16rem;
+    text-align: left;
+    cursor: pointer;
+  }
+  .cardd p {
+    font-size: 0.4rem;
+    cursor: pointer;
+    text-align: left;
+  }
+}
+@media only screen and (max-width: 300px) {
+  .home img {
+    margin-top: 10%;
+    width: 10rem;
+  }
+  .home-img {
+    height: 10rem;
+  }
+  .cardd h1 {
+    margin-left: 1rem;
+    margin-top: 2rem;
+    font-size: 0.7rem;
+    text-align: left;
+    cursor: pointer;
+  }
+  .cardd p {
+    margin-left: 1rem;
+    font-size: 0.4rem;
+    cursor: pointer;
+    text-align: left;
+  }
+}
+@media only screen and (max-width: 280px) {
+  .home img {
+    margin-top: 20%;
+    width: 9rem;
+    margin-left: 4rem;
+  }
+  .home-img {
+    height: 10rem;
+  }
+  .cardd h1 {
+    margin-left: 2rem;
+    margin-top: 2rem;
+    font-size: 1rem;
+    text-align: left;
+    cursor: pointer;
+  }
+  .cardd p {
+    margin-left: 2rem;
+    font-size: 0.6rem;
+    cursor: pointer;
+    text-align: left;
+  }
+}
