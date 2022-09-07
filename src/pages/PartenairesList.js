@@ -20,7 +20,7 @@ export default function PartenairesList(prop) {
 
   const getData = async () => {
     try {
-      const { data } = await axios.get(`http://localhost:8888/api/partenaires/get`);
+      const { data } = await axios.get(`partenaires/get`);
       setData(data.result);
     } catch (err) {
       console.log(err);
@@ -28,7 +28,6 @@ export default function PartenairesList(prop) {
   };
 
   const getdata = data;
-  const key = localStorage.getItem("authorization");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -38,11 +37,7 @@ export default function PartenairesList(prop) {
     formData.append("description", newPartenaire.description);
 
     axios
-      .post(`http://localhost:8888/api/partenaires/add`, formData, {
-        headers: {
-          authorization: key,
-        },
-      })
+      .post(`partenaires/add`, formData)
       .then((res) => {
         setSuccess("Done");
         window.location.reload();
@@ -76,9 +71,9 @@ export default function PartenairesList(prop) {
         ) : (
           <>
             {getdata
-              .map((item) => {
+              .map((item, i) => {
                 return (
-                  <Row>
+                  <Row key={Math.random()}>
                     <Col className="pt-5 align-self-center ">
                       <Partenaires styleButton={prop.styleButton} getdata={item} />
                     </Col>

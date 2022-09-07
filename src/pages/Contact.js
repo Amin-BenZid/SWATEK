@@ -28,26 +28,18 @@ export default function Contact(prop) {
     sujet,
     message,
   };
-  const key = localStorage.getItem("authorization");
 
   const getData = async () => {
     try {
-      const { data } = await axios.get(`http://localhost:8888/api/admin/contact`, {
-        headers: {
-          authorization: key,
-        },
-      });
+      const { data } = await axios.get(`admin/contact`);
       setData(data.messages);
     } catch (err) {}
   };
-  useEffect(() => {
-    getData();
-  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     await axios
-      .post("http://localhost:8888/api/contact/add", newMessage)
+      .post("contact/add", newMessage)
       .then((res) => {
         setSuccess("Done");
         window.location.reload();
@@ -59,6 +51,7 @@ export default function Contact(prop) {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
   return (
     <Container>
       <Navbar styleButton={prop.styleButton} />
@@ -71,8 +64,8 @@ export default function Contact(prop) {
 
           <Form>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label style={{ color: "white" }}>
-                Votre nom <spain style={{ color: "red" }}>*</spain>
+              <Form.Label style={{ color: "white", display: "flex" }}>
+                Votre nom <p style={{ color: "red" }}>*</p>
               </Form.Label>
               <Form.Control
                 onChange={(e) => {
@@ -82,8 +75,8 @@ export default function Contact(prop) {
                 type="nom"
                 placeholder="nom"
               />
-              <Form.Label style={{ color: "white" }}>
-                Tél<spain style={{ color: "red" }}>*</spain>
+              <Form.Label style={{ color: "white", display: "flex" }}>
+                Tél<p style={{ color: "red" }}>*</p>
               </Form.Label>
               <Form.Control
                 onChange={(e) => {
@@ -93,7 +86,9 @@ export default function Contact(prop) {
                 type="nom"
                 placeholder="Tél"
               />
-              <Form.Label style={{ color: "white" }}>Localisation</Form.Label>
+              <Form.Label style={{ color: "white", display: "flex" }}>
+                Localisation<p style={{ color: "red" }}>*</p>
+              </Form.Label>
               <Form.Control
                 onChange={(e) => {
                   setLocation(e.target.value);
@@ -102,8 +97,8 @@ export default function Contact(prop) {
                 type="localisation"
                 placeholder="localisation"
               />
-              <Form.Label style={{ color: "white" }}>
-                Votre e-mail <spain style={{ color: "red" }}>*</spain>{" "}
+              <Form.Label style={{ color: "white", display: "flex" }}>
+                Votre e-mail<p style={{ color: "red" }}>*</p>
               </Form.Label>
               <Form.Control
                 onChange={(e) => {
@@ -124,8 +119,8 @@ export default function Contact(prop) {
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-              <Form.Label style={{ color: "white" }}>
-                Votre message <spain style={{ color: "red" }}>*</spain>
+              <Form.Label style={{ color: "white", display: "flex" }}>
+                Votre message<p style={{ color: "red" }}>*</p>
               </Form.Label>
               <Form.Control
                 onChange={(e) => {
@@ -143,7 +138,7 @@ export default function Contact(prop) {
             variant="light"
             onClick={handleSubmit}
           >
-            Send
+            Envoyer
           </Button>
         </Col>
         <Col>
@@ -153,13 +148,13 @@ export default function Contact(prop) {
       <Row style={prop.styleButton}>
         <Col style={{ color: "white", fontSize: "1.5rem" }}>
           {data === undefined ? (
-            <h2 style={{ color: "white" }}>Loading...</h2>
+            <h2 style={{ color: "white" }}>Contacts :</h2>
           ) : (
             <>
               {data
-                .map((item) => {
+                .map((item, i) => {
                   return (
-                    <Row>
+                    <Row key={Math.random()}>
                       <Col className="pt-5 align-self-center ">
                         <Message data={item} />
                       </Col>
@@ -168,8 +163,21 @@ export default function Contact(prop) {
                 })
                 .reverse()}
             </>
-          )}{" "}
+          )}
         </Col>
+        <Row style={{ marginBottom: "2rem" }}>
+          <Button
+            style={{
+              color: "white",
+              backgroundColor: "#7700ff",
+              marginTop: "1rem",
+              width: "10rem",
+            }}
+            onClick={getData}
+          >
+            Show Contacts
+          </Button>
+        </Row>
       </Row>
       <div style={{ height: "2px", backgroundColor: "gray" }}></div>
 

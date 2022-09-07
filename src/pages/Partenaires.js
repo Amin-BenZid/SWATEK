@@ -4,16 +4,10 @@ import axios from "axios";
 import parse from "html-react-parser";
 
 export default function Produit(props) {
-  const key = localStorage.getItem("authorization");
-
   const handleClick = (e) => {
     const name = props.getdata.partenairesName;
     axios
-      .delete(`http://localhost:8888/api/partenaires/delete/${name}`, {
-        headers: {
-          authorization: key,
-        },
-      })
+      .delete(`partenaires/delete/${name}`)
       .then((res) => {
         window.location.reload();
       })

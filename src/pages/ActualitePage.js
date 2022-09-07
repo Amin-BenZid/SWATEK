@@ -11,14 +11,13 @@ import { Link } from "react-router-dom";
 
 export default function ActualitePage(props) {
   const navigate = useNavigate();
-  const key = localStorage.getItem("authorization");
 
   const [data, setData] = useState();
   var url = window.location.pathname;
   var id = url.substring(url.lastIndexOf("/") + 1);
   const getData = async () => {
     try {
-      const data = await axios.get(`http://localhost:8888/api/actualites/one/${id}`);
+      const data = await axios.get(`actualites/one/${id}`);
       setData(data.data.findActualites);
     } catch (err) {
       console.log(err);
@@ -30,11 +29,7 @@ export default function ActualitePage(props) {
 
   const handleDelete = () => {
     axios
-      .delete(`http://localhost:8888/api/actualites/delete/${id}`, {
-        headers: {
-          authorization: key,
-        },
-      })
+      .delete(`actualites/delete/${id}`)
       .then((res) => {
         navigate("/actualites", { replace: true });
       })
@@ -54,7 +49,6 @@ export default function ActualitePage(props) {
         </Col>
       ) : (
         <Row>
-          {data.file === "nothing" ? (pdf = "none") : (pdf = "flex")}
           <Col sm={7} style={{ color: "white", marginTop: "4rem" }}>
             <h4>{">."}</h4>
             <Button style={props.styleButton} onClick={handleDelete} variant="danger">
@@ -63,6 +57,8 @@ export default function ActualitePage(props) {
             <Row style={{ justifyContent: "center" }}>
               <img style={{ width: "70%", borderRadius: "2rem" }} src={`http://localhost:8888/${data.photo}`} />
             </Row>
+            <p style={{ color: "black" }}>{data.file === "nothing" ? (pdf = "none") : (pdf = "flex")}</p>
+
             <Row style={{ justifyContent: "center" }}>
               <h1 style={{ marginTop: "4rem" }}>{data.title}</h1>
             </Row>

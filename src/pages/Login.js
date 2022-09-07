@@ -19,7 +19,7 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     await axios
-      .post("http://localhost:8888/api/admin/login", data)
+      .post("admin/login", data)
       .then((res) => {
         navigate("/", { replace: true });
         localStorage.setItem("authorization", res.data.token);

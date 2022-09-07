@@ -32,7 +32,7 @@ export default function navbar(prop) {
               <Link className="link" to="/">
                 ACCUEIL
               </Link>
-              <Lnk spy={true} smooth={true} offset={-100} duration={10} className="link" to="pre">
+              <Lnk offset={-100} duration={10} className="link" to="pre">
                 NOS PRESENTATION
               </Lnk>
               <Link className="link" to="/produits">
@@ -44,7 +44,7 @@ export default function navbar(prop) {
               <Link className="link" to="/actualites">
                 ACTUALITES
               </Link>
-              <Link to="/contact" className="link" spy={true} smooth={true} offset={-100} duration={10} id="contact">
+              <Link to="/contact" className="link" offset={-100} duration={10} id="contact">
                 CONTACT
               </Link>
             </Nav>

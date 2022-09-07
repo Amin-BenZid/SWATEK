@@ -23,13 +23,12 @@ export default function ActualitesList(prop) {
   });
   const getData = async () => {
     try {
-      const data = await axios.get(`http://localhost:8888/api/actualites/all`);
+      const data = await axios.get(`actualites/all`);
       setData(data.data.findActualites);
     } catch (err) {
       console.log(err);
     }
   };
-  const key = localStorage.getItem("authorization");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -40,11 +39,7 @@ export default function ActualitesList(prop) {
     formData.append("file", newActualites.file);
 
     axios
-      .post(`http://localhost:8888/api/actualites/add`, formData, {
-        headers: {
-          authorization: key,
-        },
-      })
+      .post(`actualites/add`, formData)
       .then((res) => {
         setSuccess("Done");
         window.location.reload();
@@ -83,9 +78,9 @@ export default function ActualitesList(prop) {
         ) : (
           <>
             {data
-              .map((item) => {
+              .map((item, i) => {
                 return (
-                  <Row style={{ width: "25rem", textAlign: "center" }}>
+                  <Row key={Math.random()} style={{ width: "25rem", textAlign: "center" }}>
                     <Col className="pt-5 align-self-center ">
                       <Actualites styleButton={prop.styleButton} data={item} />
                     </Col>

@@ -17,7 +17,9 @@ export default function Actualites(props) {
             <Card.Text style={{ color: "gray" }}>
               <i>{dateString}</i>
             </Card.Text>
-            <Card.Text id="text">{parse(props.data.paragraph)} </Card.Text>
+            <Card.Text id="text">
+              <i>{parse(props.data.paragraph)}</i>
+            </Card.Text>
             <Link style={{ color: "#7420d3" }} to={`/actualite/${props.data._id}`}>
               Voir plus
             </Link>

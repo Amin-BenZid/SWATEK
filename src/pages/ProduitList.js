@@ -18,7 +18,7 @@ export default function ProduitList(prop) {
   const [error, setError] = useState();
   const getData = async () => {
     try {
-      const { data } = await axios.get(`http://localhost:8888/api/produits/get`);
+      const { data } = await axios.get(`produits/get`);
       setData(data.findProduits);
     } catch (err) {
       console.log(err);
@@ -26,8 +26,6 @@ export default function ProduitList(prop) {
   };
 
   const getdata = data;
-
-  const key = localStorage.getItem("authorization");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -37,11 +35,7 @@ export default function ProduitList(prop) {
     formData.append("description", newProduct.description);
 
     axios
-      .post(`http://localhost:8888/api/produits/add`, formData, {
-        headers: {
-          authorization: key,
-        },
-      })
+      .post(`produits/add`, formData)
       .then((res) => {
         setSuccess("Done");
         window.location.reload();
@@ -66,6 +60,7 @@ export default function ProduitList(prop) {
   useEffect(() => {
     getData();
   }, []);
+
   return (
     <div>
       <Container>
@@ -76,11 +71,11 @@ export default function ProduitList(prop) {
           ) : (
             <>
               {getdata
-                .map((item) => {
+                .map((item, i) => {
                   return (
-                    <Row>
+                    <Row key={Math.random()}>
                       <Col className="pt-5 align-self-center ">
-                        <Produit styleButton={prop.styleButton} getdata={item} />
+                        <Produit getdata={item} styleButton={prop.styleButton} />
                       </Col>
                     </Row>
                   );

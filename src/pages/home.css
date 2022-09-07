@@ -19,10 +19,12 @@
 .cardd p {
   cursor: pointer;
   text-align: left;
+  color: rgb(182, 179, 179);
+  font-style: italic;
 }
 @media only screen and (max-width: 1040px) {
   .home img {
-    margin-top: 15%;
+    margin-top: 25%;
     margin-right: 10%;
     width: 28rem;
   }
@@ -30,7 +32,6 @@
     font-size: 1.5rem;
     margin-top: 12rem;
     text-align: left;
-    cursor: pointer;
   }
   .cardd p {
     font-size: 1rem;
@@ -40,7 +41,7 @@
 }
 @media only screen and (max-width: 760px) {
   .home img {
-    margin-top: 45%;
+    margin-top: 60%;
     margin-right: 10%;
     width: 20rem;
   }
@@ -59,36 +60,37 @@
 
 @media only screen and (max-width: 570px) {
   .home img {
-    margin-top: 5%;
+    margin-top: 55%;
     margin-right: 10%;
     width: 15rem;
   }
   .cardd h1 {
     font-size: 0.8rem;
-    margin-top: 5rem;
+    margin-top: 12rem;
     text-align: left;
     cursor: pointer;
   }
   .cardd p {
-    font-size: 0.5rem;
+    font-size: 0.6rem;
     cursor: pointer;
     text-align: left;
+    height: 7rem;
   }
 }
 @media only screen and (max-width: 420px) {
   .home img {
-    margin-top: 30%;
+    margin-top: 75%;
     margin-right: 0;
-    width: 12rem;
+    width: 13rem;
   }
   .cardd h1 {
-    font-size: 0.8rem;
-    margin-top: 5rem;
+    font-size: 1rem;
+    margin-top: 10rem;
     text-align: left;
     cursor: pointer;
   }
   .cardd p {
-    font-size: 0.5rem;
+    font-size: 0.6rem;
     cursor: pointer;
     text-align: left;
   }
