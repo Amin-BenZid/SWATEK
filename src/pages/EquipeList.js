@@ -1,45 +1,40 @@
 import React, { useEffect, useState } from "react";
-import "./actualites.css";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-
-import axios from "axios";
-import Actualites from "./Actualites";
-
+import EquipCard from "./EquipCard";
 import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
+import axios from "axios";
 
-export default function ActualitesList(prop) {
-  const [success, setSuccess] = useState();
-  const [error, setError] = useState();
+export default function Equipe(prop) {
   const [data, setData] = useState();
 
-  const [newActualites, setNewActualites] = useState({
+  const [newMember, setNewMember] = useState({
     photo: "",
-    title: "",
-    paragraph: "",
-    file: "",
+    name: "",
+    role: "",
+    description: "",
   });
+  const [success, setSuccess] = useState();
+  const [error, setError] = useState();
   const getData = async () => {
     try {
-      const data = await axios.get(`actualites/all`);
-      setData(data.data.findActualites);
+      const { data } = await axios.get(`equipe/get`);
+      setData(data.result);
     } catch (err) {
       console.log(err);
     }
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("photo", newActualites.photo);
-    formData.append("title", newActualites.title);
-    formData.append("paragraph", newActualites.paragraph);
-    formData.append("file", newActualites.file);
+    formData.append("photo", newMember.photo);
+    formData.append("name", newMember.name);
+    formData.append("role", newMember.role);
+    formData.append("description", newMember.description);
 
     axios
-      .post(`actualites/add`, formData)
+      .post(`equipe/add`, formData)
       .then((res) => {
         setSuccess("Done");
         window.location.reload();
@@ -51,38 +46,34 @@ export default function ActualitesList(prop) {
   };
 
   const handleChange = (e) => {
-    setNewActualites({ ...newActualites, [e.target.name]: e.target.value });
+    setNewMember({ ...newMember, [e.target.name]: e.target.value });
   };
-  const handleParagraph = (e) => {
-    setNewActualites({ ...newActualites, paragraph: e });
+  const handleDescription = (e) => {
+    setNewMember({ ...newMember, description: e });
   };
-
   const handlePhoto = (e) => {
-    setNewActualites({ ...newActualites, photo: e.target.files[0] });
-  };
-  const handleFile = (e) => {
-    setNewActualites({ ...newActualites, file: e.target.files[0] });
+    setNewMember({ ...newMember, photo: e.target.files[0] });
   };
   useEffect(() => {
     getData();
   }, []);
+  const getdata = data;
 
   return (
-    <Container id="actualitesList">
+    <Container>
       <Navbar styleButton={prop.styleButton} />
-      <div style={{ height: "2px", backgroundColor: "gray" }}></div>
-
-      <Row>
-        {data === undefined ? (
+      <div style={{ height: "2px", backgroundColor: "gray", marginBottom: "4rem" }}></div>
+      <Row style={{ marginBottom: "8rem", justifyContent: "center" }}>
+        {getdata === undefined ? (
           <h2 style={{ color: "white" }}>Loading...</h2>
         ) : (
           <>
-            {data
+            {getdata
               .map((item, i) => {
                 return (
-                  <Row key={Math.random()} style={{ width: "25rem", textAlign: "center" }}>
+                  <Row style={{ width: "20rem" }} key={Math.random()}>
                     <Col className="pt-5 align-self-center ">
-                      <Actualites styleButton={prop.styleButton} data={item} />
+                      <EquipCard getdata={item} styleButton={prop.styleButton} />
                     </Col>
                   </Row>
                 );
@@ -91,13 +82,12 @@ export default function ActualitesList(prop) {
           </>
         )}
       </Row>
-
       <Row style={{ color: "white" }}>
         <Col style={prop.styleButton}>
           <Form style={{ width: "100%" }} onSubmit={handleSubmit}>
             <h2 style={{ color: "green" }}>{success}</h2>
             <h2 style={{ color: "red" }}>{error}</h2>
-            <h1>ADD </h1>
+            <h1>ADD</h1>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label style={{ color: "white" }}>Photo</Form.Label>
               <Form.Control
@@ -110,32 +100,38 @@ export default function ActualitesList(prop) {
               <Form.Label style={{ color: "white" }}>Titre</Form.Label>
               <Form.Control
                 onChange={handleChange}
-                value={newActualites.title}
+                value={newMember.name}
                 className="formm"
                 type="Titre"
-                placeholder="Titre"
-                name="title"
+                placeholder="Name"
+                name="name"
               />
-              <Form.Label style={{ color: "white" }}> Paragraph</Form.Label>
+              <Form.Label style={{ color: "white" }}>Titre</Form.Label>
+              <Form.Control
+                onChange={handleChange}
+                value={newMember.role}
+                className="formm"
+                type="Titre"
+                placeholder="role"
+                name="role"
+              />
+              <Form.Label style={{ color: "white" }}>Description</Form.Label>
               <ReactQuill
                 style={{ height: "30vh", marginBottom: "3rem", color: "white" }}
-                onChange={handleParagraph}
+                onChange={handleDescription}
                 theme="snow"
-                value={newActualites.paragraph}
+                value={newMember.description}
                 className="formm"
-                type="paragraph"
-                placeholder="Paragraph"
-                name="paragraph"
+                type="Description"
+                placeholder="Description"
+                name="description"
               />
-              <Form.Label style={{ color: "white" }}>File</Form.Label>
-              <Form.Control onChange={handleFile} className="formm" type="file" accept=".pdf" name="file" />
             </Form.Group>
             <Button onClick={handleSubmit}>ADD!</Button>
           </Form>
         </Col>
       </Row>
-      <div style={{ height: "2px", backgroundColor: "gray", marginTop: "5rem" }}></div>
-
+      <div style={{ height: "2px", backgroundColor: "gray", marginTop: "3.5rem" }}></div>
       <Footer />
     </Container>
   );

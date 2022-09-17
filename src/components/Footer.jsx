@@ -26,7 +26,7 @@ export default function Footer() {
           <p style={{ color: "gray" }}>@swatek.tn </p>
         </Col>
         <Col className="sec">
-          <h3>NOS PRESTATIONS</h3>
+          <h3>PRESTATIONS</h3>
           <Link style={{ textDecoration: "none" }} to="/batiment">
             <br />- LA GESTION TECHNIQUE DU BÂTIMENT
           </Link>
@@ -41,7 +41,8 @@ export default function Footer() {
           <h3>CONTACT</h3>
           <p style={{ color: "gray" }}>
             <b>Adresse : </b>3 rue des amandes Khézama Est 4051 Sousse Tunisie <br />
-            <b>Tél : </b>(+216) 73 277 052 <br />
+            <b>Tél : </b>(+216) 58 096 314 <br />
+            <b>Tél : </b>(+216) 52 561 287 <br />
             <b>Email : </b>contact@swatek.tn
           </p>
         </Col>

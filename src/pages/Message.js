@@ -1,8 +1,20 @@
+import axios from "axios";
 import React from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 
 export default function Message(props) {
-  console.log(props.data);
+  const handleClick = (e) => {
+    let id = props.data._id;
+    axios
+      .delete(`contact/delete/${id}`)
+      .then((res) => {
+        console.log(res);
+        window.location.reload();
+      })
+      .catch((err) => {
+        console.log(err.response.data.error);
+      });
+  };
   return (
     <Container>
       <Row style={{ marginBottom: "4rem", display: "flex" }}>
@@ -10,6 +22,9 @@ export default function Message(props) {
           md={5}
           style={{ color: "white", borderRadius: "10%", border: "2px solid white", height: "100%", padding: "1rem" }}
         >
+          <Button style={props.styleButton} variant="danger" onClick={handleClick}>
+            DELETE
+          </Button>
           <p>
             <span style={{ color: "#7700ff" }}>Nom :</span> {props.data.name}
             <br />

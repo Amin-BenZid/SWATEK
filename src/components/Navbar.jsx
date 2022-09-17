@@ -33,17 +33,21 @@ export default function navbar(prop) {
                 ACCUEIL
               </Link>
               <Lnk offset={-100} duration={10} className="link" to="pre">
-                NOS PRESENTATION
+                PRESTATIONS
               </Lnk>
               <Link className="link" to="/produits">
-                NOS PRODUITS
+                PRODUITS
               </Link>
               <Link className="link" to="/partenaires">
                 PARTENAIRES
               </Link>
+              <Link className="link" to="/equipe">
+                EQUIPE
+              </Link>
               <Link className="link" to="/actualites">
                 ACTUALITES
               </Link>
+
               <Link to="/contact" className="link" offset={-100} duration={10} id="contact">
                 CONTACT
               </Link>

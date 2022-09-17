@@ -111,7 +111,7 @@ export default function ProduitList(prop) {
                 <Form.Label style={{ color: "white" }}>Description</Form.Label>
 
                 <ReactQuill
-                  style={{ height: "30vh", marginBottom: "3rem" }}
+                  style={{ height: "30vh", marginBottom: "3rem", color: "white" }}
                   onChange={handleDescription}
                   theme="snow"
                   value={newProduct.description}

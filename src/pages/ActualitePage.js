@@ -8,8 +8,13 @@ import { useNavigate } from "react-router-dom";
 import parse from "html-react-parser";
 import swatekLogo from "../img/SwatekLogo.png";
 import { Link } from "react-router-dom";
+import { FaRegEdit } from "react-icons/fa";
+import { MdOutlineDelete } from "react-icons/md";
+import EditActualite from "./EditActualite";
 
 export default function ActualitePage(props) {
+  const [openModal, setOpenModal] = useState(false);
+
   const navigate = useNavigate();
 
   const [data, setData] = useState();
@@ -51,9 +56,26 @@ export default function ActualitePage(props) {
         <Row>
           <Col sm={7} style={{ color: "white", marginTop: "4rem" }}>
             <h4>{">."}</h4>
-            <Button style={props.styleButton} onClick={handleDelete} variant="danger">
-              DELTE
-            </Button>
+            <Col style={{ marginTop: "3rem", display: "flex", height: "2.5rem", marginBottom: "1rem" }}>
+              <Button style={props.styleButton} variant="danger" onClick={handleDelete}>
+                <h6>
+                  DELETE
+                  <MdOutlineDelete size="20px" />
+                </h6>
+              </Button>
+              <Button
+                style={props.styleButton}
+                variant="warning"
+                onClick={() => setOpenModal(true)}
+                className="modalButton"
+              >
+                <h6>
+                  EDIT
+                  <FaRegEdit size="20px" />
+                </h6>
+              </Button>
+              <EditActualite data={data} open={openModal} onClose={() => setOpenModal(false)} />
+            </Col>
             <Row style={{ justifyContent: "center" }}>
               <img style={{ width: "70%", borderRadius: "2rem" }} src={`http://localhost:8888/${data.photo}`} />
             </Row>
@@ -64,7 +86,7 @@ export default function ActualitePage(props) {
             </Row>
             <Row style={{ justifyContent: "center" }}>
               {parse(data.paragraph)}
-
+        
               <Row />
               <Row style={{ display: pdf }}>
                 <Button variant="info" style={{ marginTop: "2rem", width: "5.5rem" }}>
@@ -107,7 +129,8 @@ export default function ActualitePage(props) {
             <Row style={{ marginTop: "7rem", marginLeft: "1rem" }}>
               <p>
                 Contact Adresse : 3 rue des amandes Khézama Est 4051 Sousse Tunisie <br />
-                Tél : (+216) 73 277 052 <br />
+                <b>Tél : </b>(+216) 58 096 314 <br />
+                <b>Tél : </b>(+216) 52 561 287 <br />
                 Email : contact@swatek.tn
               </p>
             </Row>

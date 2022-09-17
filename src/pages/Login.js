@@ -30,10 +30,10 @@ export default function Login() {
       });
   };
   return (
-    <Container>
-      <Row style={{ marginTop: "20%" }}>
+    <Container style={{ backgroundColor: "black", height: "100vh" }}>
+      <Row>
         <Col></Col>
-        <Col>
+        <Col style={{ marginTop: "15%" }}>
           <h1 style={{ color: "red" }}>{error}</h1>
           <Form style={{ border: "2px solid #7420d3 ", padding: "1rem" }}>
             <Form.Group className="mb-3" controlId="formGroupEmail">
