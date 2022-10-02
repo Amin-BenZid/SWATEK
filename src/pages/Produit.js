@@ -31,16 +31,16 @@ export default function Produit(prop) {
           <i style={{ color: "gray", fontSize: "15px" }}>SWATEK</i>
         </Col>
         <Col style={{ marginTop: "3rem", display: "flex", height: "2rem" }}>
-          <Button style={prop.styleButton} variant="danger" onClick={handleClick}>
+          <Button style={prop.styleButton} variant="dark" onClick={handleClick}>
             <h6>
               DELETE
-              <MdOutlineDelete size="20px" />
+              <MdOutlineDelete size="15px" />
             </h6>
           </Button>
-          <Button style={prop.styleButton} variant="warning" onClick={() => setOpenModal(true)} className="modalButton">
+          <Button style={prop.styleButton} variant="dark" onClick={() => setOpenModal(true)} className="modalButton">
             <h6>
               EDIT
-              <FaRegEdit size="20px" />
+              <FaRegEdit size="15px" />
             </h6>
           </Button>
           <EditProduct data={prop.getdata} open={openModal} onClose={() => setOpenModal(false)} />

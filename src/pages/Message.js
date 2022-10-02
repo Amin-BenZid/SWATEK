@@ -22,7 +22,7 @@ export default function Message(props) {
           md={5}
           style={{ color: "white", borderRadius: "10%", border: "2px solid white", height: "100%", padding: "1rem" }}
         >
-          <Button style={props.styleButton} variant="danger" onClick={handleClick}>
+          <Button style={props.styleButton} variant="dark" onClick={handleClick}>
             DELETE
           </Button>
           <p>

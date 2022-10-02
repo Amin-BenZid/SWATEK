@@ -24,20 +24,15 @@ export default function EquipCard(prop) {
   return (
     <Container>
       <Row>
-        <Card style={{ width: "18rem", border: "3px solid #7420d3" }}>
+        <Card style={{ width: "18rem", border: "3px solid white", backgroundColor: "hsla(268,73%,47%,1)" }}>
           <Col style={{ display: "flex", height: "2rem" }}>
-            <Button style={prop.styleButton} variant="danger" onClick={handleClick}>
+            <Button style={prop.styleButton} variant="dark" onClick={handleClick}>
               <p>
                 DELETE
-                <MdOutlineDelete size="20px" />
+                <MdOutlineDelete size="15px" />
               </p>
             </Button>
-            <Button
-              style={prop.styleButton}
-              variant="warning"
-              onClick={() => setOpenModal(true)}
-              className="modalButton"
-            >
+            <Button style={prop.styleButton} variant="dark" onClick={() => setOpenModal(true)} className="modalButton">
               <p>
                 EDIT
                 <FaRegEdit size="15px" />
@@ -47,7 +42,7 @@ export default function EquipCard(prop) {
           </Col>
           <Card.Img
             style={{
-              borderRadius: "100%",
+              borderRadius: "90%",
               width: "10rem",
               height: "13rem",
               marginLeft: "auto",
@@ -57,14 +52,14 @@ export default function EquipCard(prop) {
             variant="top"
             src={`http://localhost:8888/${prop.getdata.photo}`}
           />
-          <Card.Body style={{ backgroundColor: "white" }}>
+          <Card.Body style={{ backgroundColor: "hsla(268,73%,47%,1)", textAlign: "center" }}>
             <Card.Title>
-              <h3 style={{ backgroundColor: "white" }}>{prop.getdata.memberName}</h3>
+              <h3 style={{ backgroundColor: "hsla(268,73%,47%,1)" }}>{prop.getdata.memberName}</h3>
             </Card.Title>
             <Card.Title>
-              <h5 style={{ backgroundColor: "white" }}>{prop.getdata.memberRole}</h5>
+              <h5 style={{ backgroundColor: "hsla(268,73%,47%,1)" }}>{prop.getdata.memberRole}</h5>
             </Card.Title>
-            <Card.Text style={{ backgroundColor: "white" }}>{parse(prop.getdata.memberDes)}</Card.Text>
+            <Card.Text style={{ backgroundColor: "hsla(268,73%,47%,1)" }}>{parse(prop.getdata.memberDes)}</Card.Text>
           </Card.Body>
         </Card>
       </Row>

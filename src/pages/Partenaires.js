@@ -31,19 +31,14 @@ export default function Produit(props) {
           <h2 style={{ marginTop: "3.5rem" }}>{props.getdata.partenairesName}</h2>
           <i style={{ color: "gray", fontSize: "20px" }}>SWATEK</i>
         </Col>
-        <Col style={{ display: "flex", height: "2rem" }}>
-          <Button style={props.styleButton} variant="danger" onClick={handleClick}>
+        <Col style={{ display: "flex", height: "2rem", marginTop: "1rem" }}>
+          <Button style={props.styleButton} variant="dark" onClick={handleClick}>
             <p>
               DELETE
-              <MdOutlineDelete size="20px" />
+              <MdOutlineDelete size="15px" />
             </p>
           </Button>
-          <Button
-            style={props.styleButton}
-            variant="warning"
-            onClick={() => setOpenModal(true)}
-            className="modalButton"
-          >
+          <Button style={props.styleButton} variant="dark" onClick={() => setOpenModal(true)} className="modalButton">
             <p>
               EDIT
               <FaRegEdit size="15px" />

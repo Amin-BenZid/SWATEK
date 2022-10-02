@@ -57,21 +57,21 @@ export default function ActualitePage(props) {
           <Col sm={7} style={{ color: "white", marginTop: "4rem" }}>
             <h4>{">."}</h4>
             <Col style={{ marginTop: "3rem", display: "flex", height: "2.5rem", marginBottom: "1rem" }}>
-              <Button style={props.styleButton} variant="danger" onClick={handleDelete}>
+              <Button style={props.styleButton} variant="dark" onClick={handleDelete}>
                 <h6>
                   DELETE
-                  <MdOutlineDelete size="20px" />
+                  <MdOutlineDelete size="15px" />
                 </h6>
               </Button>
               <Button
                 style={props.styleButton}
-                variant="warning"
+                variant="dark"
                 onClick={() => setOpenModal(true)}
                 className="modalButton"
               >
                 <h6>
                   EDIT
-                  <FaRegEdit size="20px" />
+                  <FaRegEdit size="15px" />
                 </h6>
               </Button>
               <EditActualite data={data} open={openModal} onClose={() => setOpenModal(false)} />
@@ -86,7 +86,7 @@ export default function ActualitePage(props) {
             </Row>
             <Row style={{ justifyContent: "center" }}>
               {parse(data.paragraph)}
-        
+
               <Row />
               <Row style={{ display: pdf }}>
                 <Button variant="info" style={{ marginTop: "2rem", width: "5.5rem" }}>
