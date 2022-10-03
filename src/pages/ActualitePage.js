@@ -77,7 +77,7 @@ export default function ActualitePage(props) {
               <EditActualite data={data} open={openModal} onClose={() => setOpenModal(false)} />
             </Col>
             <Row style={{ justifyContent: "center" }}>
-              <img style={{ width: "70%", borderRadius: "2rem" }} src={`http://localhost:8888/${data.photo}`} />
+              <img style={{ width: "70%", borderRadius: "2rem" }} src={`http://151.80.123.212:8888/${data.photo}`} />
             </Row>
             <p style={{ color: "black" }}>{data.file === "nothing" ? (pdf = "none") : (pdf = "flex")}</p>
 
