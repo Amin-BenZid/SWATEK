@@ -50,7 +50,7 @@ export default function EquipCard(prop) {
               marginTop: "1rem",
             }}
             variant="top"
-            src={`http://localhost:8888/${prop.getdata.photo}`}
+            src={`http://151.80.123.212:8888/${prop.getdata.photo}`}
           />
           <Card.Body style={{ backgroundColor: "hsla(268,73%,47%,1)", textAlign: "center" }}>
             <Card.Title>
