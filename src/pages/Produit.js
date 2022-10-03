@@ -48,7 +48,7 @@ export default function Produit(prop) {
       </Row>
       <Row className="bigbox">
         <Col sm={12} md={6}>
-          <img className="img-prod" src={`http://localhost:8888/${prop.getdata.logo}`} />
+          <img className="img-prod" src={`http://151.80.123.212:8888/${prop.getdata.logo}`} />
         </Col>
         <Col sm={12} md={6}>
           <p style={{ textAlign: "left" }}>{parse(prop.getdata.ProduitDes)}</p>
