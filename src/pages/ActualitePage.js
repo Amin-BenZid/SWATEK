@@ -97,7 +97,7 @@ export default function ActualitePage(props) {
                       textDecoration: "none",
                       textAlign: "center",
                     }}
-                    href={`http://localhost:8888/${data.file}`}
+                    href={`http://151.80.123.212:8888//${data.file}`}
                     target="_blank"
                   >
                     Voir PDF
